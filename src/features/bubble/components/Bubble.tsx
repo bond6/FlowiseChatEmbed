@@ -1,4 +1,4 @@
-import { createSignal, Show, splitProps, onCleanup, createEffect } from 'solid-js';
+import { createSignal, Show, splitProps, onCleanup, onMount } from 'solid-js';
 import styles from '../../../assets/index.css';
 import { BubbleButton } from './BubbleButton';
 import { BubbleParams } from '../types';
@@ -28,16 +28,27 @@ export const Bubble = (props: BubbleProps) => {
     isBotOpened() ? closeBot() : openBot();
   };
 
-  createEffect(() => {
-    const clickOutsideHandler = (event: Event) => {
+  onMount(() => {
+    const clickOutsideHandler = (event: MouseEvent) => {
+      const path = event.composedPath();
+      const chatbotElement = document.querySelector('flowise-chatbot');
+      const contains = path.some((el) => el === chatbotElement);
+      console.log(path.some((el) => el === chatbotElement));
       const target = event.target as Node;
       // Assume your chatbot has a ref or a unique class/id you can target
-      const chatbotElement = document.querySelector('flowise-chatbot');
-      if (chatbotElement && !chatbotElement.contains(target)) {
-        toggleBot();
+      
+      if (chatbotElement && !contains) {
+        if (isBotOpened()) {
+          toggleBot();
+        }
       }
       console.log('clickOutsideHandler2');
       console.log('event', event);
+      console.log('target', target);
+      if (chatbotElement) {
+        console.log('target', contains);
+        console.log('chatbotElement', chatbotElement);
+      }
     };
 
     // Add event listener to the document body
