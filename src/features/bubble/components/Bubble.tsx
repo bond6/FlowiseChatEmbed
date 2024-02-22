@@ -29,10 +29,11 @@ export const Bubble = (props: BubbleProps) => {
   };
 
   onMount(() => {
-    const clickOutsideHandler = (event:any) => {
+    const clickOutsideHandler = (event: Event) => {
+      const target = event.target as Node;
       // Assume your chatbot has a ref or a unique class/id you can target
-      const chatbotElement = document.querySelector('flowise-fullchatbot');
-      if (chatbotElement && !chatbotElement.contains(event.target)) {
+      const chatbotElement = document.querySelector('flowise-chatbot');
+      if (chatbotElement && !chatbotElement.contains(target)) {
         toggleBot();
       }
     };
