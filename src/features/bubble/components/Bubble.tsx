@@ -1,4 +1,4 @@
-import { createSignal, Show, splitProps, onCleanup, onMount } from 'solid-js';
+import { createSignal, Show, splitProps, onCleanup, createEffect } from 'solid-js';
 import styles from '../../../assets/index.css';
 import { BubbleButton } from './BubbleButton';
 import { BubbleParams } from '../types';
@@ -28,7 +28,7 @@ export const Bubble = (props: BubbleProps) => {
     isBotOpened() ? closeBot() : openBot();
   };
 
-  onMount(() => {
+  createEffect(() => {
     const clickOutsideHandler = (event: Event) => {
       const target = event.target as Node;
       // Assume your chatbot has a ref or a unique class/id you can target
