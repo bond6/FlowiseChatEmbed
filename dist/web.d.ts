@@ -12,9 +12,6 @@ declare const chatbot: {
         apiHost?: string | undefined;
         chatflowConfig?: Record<string, unknown> | undefined;
         observersConfig?: import("./components/Bot").observersConfigType | undefined;
-    }, propsBtn: import("./features/bubble/types").ButtonTheme & {
-        isBotOpened: boolean;
-        toggleBot: () => void;
     }) => void;
 };
 export default chatbot;
