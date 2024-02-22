@@ -47,7 +47,7 @@ export type BotProps = {
   observersConfig?: observersConfigType;
 };
 
-const defaultWelcomeMessage = 'Hi there! How can I help?';
+const defaultWelcomeMessage = 'Hello, and welcome to our new automated chat function. Please feel free to ask me whatever you would like';
 
 /*const sourceDocuments = [
     {
@@ -140,7 +140,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
   const [messages, setMessages] = createSignal<MessageType[]>(
     [
       {
-        message: props.welcomeMessage ?? defaultWelcomeMessage,
+        message: defaultWelcomeMessage,
         type: 'apiMessage',
       },
     ],
@@ -244,7 +244,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
     scrollToBottom();
 
     // Send user question and history to API
-    const welcomeMessage = props.welcomeMessage ?? defaultWelcomeMessage;
+    const welcomeMessage = defaultWelcomeMessage;
     const messageList = messages().filter((msg) => msg.message !== welcomeMessage);
 
     setMessages((prevMessages) => {
@@ -306,7 +306,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
       setChatId(uuidv4());
       setMessages([
         {
-          message: props.welcomeMessage ?? defaultWelcomeMessage,
+          message: defaultWelcomeMessage,
           type: 'apiMessage',
         },
       ]);
@@ -390,7 +390,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
       setLoading(false);
       setMessages([
         {
-          message: props.welcomeMessage ?? defaultWelcomeMessage,
+          message: defaultWelcomeMessage,
           type: 'apiMessage',
         },
       ]);
