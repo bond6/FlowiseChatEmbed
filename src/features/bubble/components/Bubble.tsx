@@ -41,11 +41,11 @@ export const Bubble = (props: BubbleProps) => {
     };
 
     // Add event listener to the document body
-    document.body.addEventListener('click', clickOutsideHandler);
+    document.addEventListener('click', clickOutsideHandler);
 
     // Cleanup the event listener when the component is unmounted
     onCleanup(() => {
-      document.body.removeEventListener('click', clickOutsideHandler);
+      document.removeEventListener('click', clickOutsideHandler);
     });
   });
   return (
