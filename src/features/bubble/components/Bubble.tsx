@@ -36,7 +36,7 @@ export const Bubble = (props: BubbleProps) => {
       if (chatbotElement && !chatbotElement.contains(target)) {
         toggleBot();
       }
-      console.log('clickOutsideHandler');
+      console.log('clickOutsideHandler2');
       console.log('event', event);
     };
 
