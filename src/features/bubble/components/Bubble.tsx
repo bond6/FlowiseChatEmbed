@@ -36,7 +36,7 @@ export const Bubble = (props: BubbleProps) => {
       console.log(path.some((el) => el === chatbotElement));
       const target = event.target as Node;
       // Assume your chatbot has a ref or a unique class/id you can target
-      
+
       if (chatbotElement && !contains) {
         if (isBotOpened()) {
           toggleBot();
